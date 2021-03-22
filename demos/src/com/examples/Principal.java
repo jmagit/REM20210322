@@ -13,6 +13,7 @@ public class Principal {
 	 */
 	public static void main(String[] args) {
 		System.out.println("Hola mundo");
+		var a = 0b1001_0011_1010_1111;
 	}
 
 	/**
