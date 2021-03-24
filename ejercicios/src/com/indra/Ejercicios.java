@@ -23,6 +23,7 @@ public class Ejercicios {
 			int numeroIntroducido;
 			int intentos = 0;
 			boolean encontrado = false;
+			//System.out.print("El numero: " + numeroBuscado);
 			do {
 				System.out.print("Dame tu numero (" + (intentos + 1) + " de 10): ");
 				numeroIntroducido = Integer.parseInt(leer());
