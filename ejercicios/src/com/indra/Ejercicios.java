@@ -6,8 +6,8 @@ import java.util.Scanner;
 public class Ejercicios {
 
 	public static void main(String[] args) {
-		// juego();
-		calcula("3+4+3,4-7*1=");
+		juego();
+		// calcula("3+4+3,4-7*1=");
 	}
 
 	private static java.util.Scanner teclado = new java.util.Scanner(System.in);
@@ -23,17 +23,21 @@ public class Ejercicios {
 			int numeroIntroducido;
 			int intentos = 0;
 			boolean encontrado = false;
-			//System.out.print("El numero: " + numeroBuscado);
+			// System.out.print("El numero: " + numeroBuscado);
 			do {
-				System.out.print("Dame tu numero (" + (intentos + 1) + " de 10): ");
-				numeroIntroducido = Integer.parseInt(leer());
-				intentos += 1;
-				if (numeroBuscado == numeroIntroducido) {
-					encontrado = true;
-				} else if (numeroBuscado > numeroIntroducido) {
-					System.out.println("Mi número es mayor.");
-				} else {
-					System.out.println("Mi número es menor.");
+				try {
+					System.out.print("Dame tu numero (" + (intentos + 1) + " de 10): ");
+					numeroIntroducido = Integer.parseInt(leer());
+					intentos += 1;
+					if (numeroBuscado == numeroIntroducido) {
+						encontrado = true;
+					} else if (numeroBuscado > numeroIntroducido) {
+						System.out.println("Mi número es mayor.");
+					} else {
+						System.out.println("Mi número es menor.");
+					}
+				} catch (Exception ex) {
+					//System.out.println("No es un número valido.");
 				}
 			} while (intentos < 10 && !encontrado);
 

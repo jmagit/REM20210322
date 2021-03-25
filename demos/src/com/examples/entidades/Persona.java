@@ -1,6 +1,9 @@
 package com.examples.entidades;
 
-public abstract class Persona implements Grafico {
+import java.io.Serializable;
+
+public abstract class Persona implements Grafico, AutoCloseable, Serializable {
+	private static final long serialVersionUID = 2L;
 	private static int cont = 0;
 	public static final int MAXLENG_NOMBRE = 50;
 	
@@ -34,9 +37,10 @@ public abstract class Persona implements Grafico {
 	public String getNombre() {
 		return nombre;
 	}
-	public void setNombre(String nombre) {
+	public void setNombre(String nombre) throws CursoException {
 		if(this.nombre.equals(nombre)) return;
-		if(nombre == null) return; // Error
+		if(nombre == null) 
+			throw new CursoException("El nombre no puede estar vacio"); // Error
 		this.nombre = nombre;
 	}
 	public String getApellidos() {
@@ -58,12 +62,18 @@ public abstract class Persona implements Grafico {
 	}
 	
 
+	@Override
 	public void pintate () {
 		System.out.println("Soy " + nombre);
 	}
 	
 	public static void dimeCuantos() { System.out.println("Personas " + cont); }
 	
+	@Override
+	public void close() throws Exception {
+		cont--;
+	}
+
 	@Override
 	protected void finalize() throws Throwable {
 		cont--;
